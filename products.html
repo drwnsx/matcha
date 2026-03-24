@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products</title>
+  <style>
+    body {
+      background-color: lightpink;
+      font-family: cooper;
+      margin: 0;
+      flex-direction: column;
+      display: flex;
+    }
+
+    header {
+      background-color: #fbf2e3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-container img {
+      height: 60px;
+      width: 60px;
+    }
+
+    .logo-container span {
+      font-size: 24px;
+      font-weight: bold;
+      color: lightcoral;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    nav a {
+      color: lightcoral;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #ffd8be;
+    }
+
+    .icons {
+      display: flex;
+      gap: 15px;
+      font-size: 20px;
+    }
+
+    .icons a {
+      color: lightcoral;
+      text-decoration: none;
+    }
+
+    .icons a:hover {
+      color: lightpink;
+    }
+
+    .section-title {
+      font-size: 28px;
+      color: #333;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .product-category {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 20px 0;
+    }
+
+    .product-item {
+      width: 200px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      background-color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .product-item img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .product-item p {
+      font-size: 16px;
+      color: lightcoral;
+      margin: 10px 0;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .btn-container button {
+      width: 48%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 12px;
+      cursor: pointer;
+      background-color: lightcoral;
+      color: white;
+      font-family: cooper;
+    }
+
+    .btn-container button:hover {
+      opacity: 0.8;
+    }
+
+    footer {
+      padding: 15px;
+      text-align: center;
+      background-color: lightcoral;
+      color: white;
+      margin-top: 214px;
+    }
+
+    @media (max-width: 768px) {
+      .product-category {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .product-item {
+        width: 80%;
+        margin-bottom: 20px;
+      }
+    }
+
+    h2 {
+      color: white;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo-container">
+      <img id="logo" src="logo.png" alt="logo">
+      <span>PopNail Studio</span>
+    </div>
+    <div>
+      <nav>
+        <a href="popnail.html">Home</a>
+        <a href="products.html">Product</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <div class="icons">
+          <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+      </nav>
+  </header>
+  </div>
+  <div class="section-title">
+    <h2>Square Shape</h2>
+  </div>
+  <div class="product-category">
+    <div class="product-item">
+      <img src="nine.jpg" alt="PNS04">
+      <p>PNS04</p>
+      <p class="price">&#8369;350</p>
+      <p>Stock: <span id="stock">20</span></p>
+      <p>Items in cart: <span id="cartCount">0</span></p>
+      <div class="btn-container">
+        <button onclick="addToCart('PNS04', 350, 'nine.jpg')">Add to Cart</button>
+        <button onclick="buyNow()">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>Copyright &copy; 2025 PopNail Studio. All rights reserved.</p>
+  </footer>
+  <script>
+let stock = localStorage.getItem("stock")
+  ? parseInt(localStorage.getItem("stock"))
+  : 0;
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function saveData() {
+  localStorage.setItem("stock", stock);
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function updateDisplay() {
+  document.getElementById("stock").innerText = stock;
+  document.getElementById("cartCount").innerText = cart.length;
+}
+
+function addToCart(name, price, image) {
+  if (stock <= 0) {
+    alert("Out of stock!");
+    return;
+  }
+
+  const existing = cart.find(item => item.name === name);
+
+  if (existing) {
+    existing.quantity++;
+  } else {
+    cart.push({ name, price, image, quantity: 1 });
+  }
+
+  stock--;
+
+  saveData();
+  updateDisplay();
+
+  alert(`${name} added to cart!`);
+}
+
+function buyNow() {
+  if (stock <= 0) {
+    alert("Out of stock!");
+    return;
+  }
+
+  stock--;
+  saveData();
+  updateDisplay();
+
+  alert("Purchase successful! Thank you for buying.");
+}
+
+updateDisplay();
+  </script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PopNail Studio</title>
+  <style>
+    body {
+      background-color: lightpink;
+      font-family: cooper;
+      margin: 0;
+      flex-direction: column;
+      display: flex;
+    }
+
+    header {
+      background-color: #fbf2e3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    nav a {
+      color: lightcoral;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: pink;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-container img {
+      height: 60px;
+      width: 60px;
+    }
+
+    .logo-container span {
+      font-size: 24px;
+      font-weight: bold;
+      color: lightcoral;
+    }
+
+    .icons {
+      display: flex;
+      gap: 15px;
+      font-size: 20px;
+    }
+
+    .icons a {
+      color: lightcoral;
+      text-decoration: none;
+    }
+
+    .icons a:hover {
+      color: lightpink;
+    }
+
+    footer {
+      padding: 15px;
+      text-align: center;
+      background-color: lightcoral;
+      color: white;
+      margin-top: 232px;
+    }
+
+    .products {
+      padding: 40px 10%;
+      text-align: center;
+      color: lightcoral;
+    }
+
+    .products h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: white;
+    }
+
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .product-card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      width: 250px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+      margin-bottom: 10px;
+      margin-top: 20px;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .product-card p {
+      font-size: 1rem;
+      color: lightcoral;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-image {
+        margin-top: 20px;
+      }
+
+      .hero-image img {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    #container {
+      display: flex;
+      position: relative;
+    }
+
+    #border {
+      margin: auto;
+    }
+
+    .span {
+      color: lightcoral;
+    }
+
+    .price {
+      font-size: 22px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo-container">
+      <img id="logo" src="logo.png" alt="logo">
+      <span>PopNail Studio</span>
+    </div>
+    <div>
+      <nav>
+        <a href="popnail.html">Home</a>
+        <a href="products.html">Product</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <div class="icons">
+          <a href="login.html"><i class="fas fa-user"></i></a>
+          <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+      </nav>
+  </header>
+  </div>
+  <section class="products">
+    <h2>Popular Picks</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="four.jpg" alt="four">
+        <h3>PNS01</h3>
+        <p>Sweet and playful vibes.</p>
+        <span class="price">₱350</span>
+      </div>
+      <div class="product-card">
+        <img src="two.jpg" alt="two">
+        <h3>PNS02</h3>
+        <p>Bold, cute, and full of charm.</p>
+        <span class="price">₱350</span>
+      </div>
+      <div class="product-card">
+        <img src="three.jpg" alt="three">
+        <h3>PNS03</h3>
+        <p>Bright designs for happy days.</p>
+        <span class="price">₱350</span>
+      </div>
+    </div>
+  </section>
+  </div>
+  <footer>
+    <p>Copyright &copy; 2025 PopNail Studio. All rights reserved.</p>
+  </footer>
+  </div>
+</body>
+
+</html>
